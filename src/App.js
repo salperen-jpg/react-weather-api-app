@@ -7,7 +7,11 @@ import { useGlobalContext } from './Components/context';
 function App() {
   const { weather } = useGlobalContext();
   return (
-    <main className={`warm`}>
+    <main
+      className={
+        weather.main && weather.main.temp > 10 ? 'main warm' : 'main cold'
+      }
+    >
       <Title />
       <SearchForm />
       <Weather />

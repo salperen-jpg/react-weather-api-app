@@ -1,61 +1,41 @@
 import React, { useContext, useState, useEffect } from 'react';
 
-//  ` https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${process.env.REACT_APP_ACCESS_KEY}`
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   let newObject;
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({ show: false, msg: '' });
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('Antalya');
   const [weather, setWeather] = useState({});
 
-  const fetchWeather = async (query) => {
+  const fetchWeather = async (url) => {
     setIsLoading(true);
     try {
-      const respone = await fetch(
-        ` https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${process.env.REACT_APP_ACCESS_KEY}`
-      );
-      const data = await respone.json();
+      const response = await fetch(url);
 
-      if (data.cod === '404') {
+      const data = await response.json();
+
+      if (data.cod === 404) {
         setError({ show: true, msg: data.message });
+        console.log(data);
+        // throw new Error('Bad response from server');
         setIsLoading(false);
       } else {
         setIsLoading(false);
         setError({ show: false, msg: '' });
         setWeather(data);
-        console.log(data);
-        const {
-          main: { temp },
-        } = weather;
-        console.log(temp);
-        const {
-          sys: { country },
-        } = weather;
-        const { name } = weather;
-        const { timezone } = weather;
-        const {
-          wind: { speed },
-        } = weather;
-
-        newObject = {
-          name,
-          country,
-          temp,
-          timezone,
-          speed,
-        };
-        console.log(name, country, temp, timezone, speed);
       }
-    } catch (error) {
-      console.log(error);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchWeather(query);
+    fetchWeather(
+      `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${process.env.REACT_APP_ACCESS_KEY}`
+    );
   }, [query]);
   return (
     <AppContext.Provider

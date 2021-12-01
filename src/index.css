@@ -63,8 +63,14 @@ h4 {
 }
 main {
   min-height: 100vh;
+}
+.warm {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-    url('./util/ainsley-myles-tBV0OhigrpA-unsplash.jpg') center/cover no-repeat;
+    url('./util/warm.jpg') center/cover no-repeat;
+}
+.cold {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+    url('./util/cold.jpg') center/cover no-repeat;
 }
 
 /* SECTION TITLE */
@@ -126,6 +132,7 @@ main {
   letter-spacing: 0.1rem;
   font-weight: 600;
   font-size: 1.2rem;
+  color: yellow;
 }
 
 /* LOADING */

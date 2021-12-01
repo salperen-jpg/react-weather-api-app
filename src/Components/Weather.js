@@ -3,7 +3,7 @@ import { useGlobalContext } from './context';
 import moment from 'moment';
 
 const Weather = () => {
-  const { weather, isLoading, newObject } = useGlobalContext();
+  const { weather, isLoading, error } = useGlobalContext();
 
   if (isLoading) {
     return (
@@ -12,32 +12,41 @@ const Weather = () => {
       </div>
     );
   }
+  if (error.show) {
+    return (
+      <div className='weather'>
+        <h1>{error.msg}</h1>
+      </div>
+    );
+  }
 
   let today = new Date();
 
   return (
     <>
-      {weather ? (
+      {weather.name ? (
         <article className='weather'>
           <div className='temp'>
-            <h1></h1>
+            <h1>{Math.floor(weather.main.temp)}°C</h1>
           </div>
           <div className='location'>
-            <h2>Stockholm, SE</h2>
+            <h2>
+              {weather.name}, {weather.sys.country}
+            </h2>
           </div>
           <h3>{moment(today).format('dddd MMMM do')}</h3>
           <h3>{moment(today).format('h:mm')}</h3>
           <p>
             <span className='attribute'>Timezone : </span>
-            <span>Number</span>
+            <span>{weather.timezone}</span>
           </p>
           <p>
             <span className='attribute'>Wind Speed : </span>
-            <span>Number</span>
+            <span>{weather.wind.speed}</span>
           </p>
         </article>
       ) : (
-        <h2>askldjsak</h2>
+        ''
       )}
     </>
   );

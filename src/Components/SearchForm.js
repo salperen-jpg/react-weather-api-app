@@ -9,10 +9,6 @@ const SearchForm = () => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    container.current.focus();
-  }, []);
-
   return (
     <div className='search-form'>
       <form action='' className='my-form' onSubmit={submitHandler}>
