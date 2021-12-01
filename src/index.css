@@ -20,6 +20,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  color: var(--main-white);
+  font-family: var(--primary-font);
+}
 a {
   text-decoration: none;
 }
@@ -57,22 +61,124 @@ h4 {
     font-size: 1rem;
   }
 }
+main {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+    url('./util/ainsley-myles-tBV0OhigrpA-unsplash.jpg') center/cover no-repeat;
+}
 
 /* SECTION TITLE */
 .section-title {
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding-top: 2rem;
   text-align: center;
 }
 .section-title h1 {
   font-family: var(--secondary-font);
-  color: var(--color-primary);
+  text-shadow: 4px 3px 5px rgba(0, 0, 0, 0.2);
+  color: var(--main-white);
   max-width: 35rem;
   margin: 0 auto;
+}
+.section-title span {
+  color: var(--color-secondary);
 }
 
 .section-title .underline {
   width: 10rem;
   height: 0.25rem;
-  background: var(--color-secondary);
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 1),
+    rgba(255, 255, 255, 1)
+  );
   margin: 2rem auto;
+}
+/* SEARCH FORM */
+.search-form {
+  padding-bottom: 2rem;
+  width: 90vw;
+  max-width: 750px;
+  margin: 0 auto;
+  border-bottom: 2px dotted var(--main-white);
+}
+.my-form input {
+  margin-bottom: 1rem;
+  width: 60%;
+  padding: 0.575rem 1rem;
+  appearance: none;
+  border-radius: 0.5rem;
+  border: 1px solid var(--main-white);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  color: #000;
+  border: none;
+  outline: none;
+  box-shadow: var(--box-dark-shadow);
+}
+.my-form input:focus {
+  color: #000;
+  background: var(--main-white);
+}
+
+.error {
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* LOADING */
+.container {
+  margin-top: 2rem;
+  text-align: center;
+}
+.loading {
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  border-top-color: royalblue;
+  animation: spinner 0.6s linear infinite;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* WEATHER */
+.weather {
+  width: 90vw;
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  text-align: center;
+}
+.temp h1 {
+  padding: 1rem;
+  max-width: 20rem;
+  margin: 0 auto;
+  font-size: 5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+.location {
+  margin-top: 0.2rem;
+}
+.location h2 {
+  font-style: italic;
+  letter-spacing: 0.1rem;
+
+  text-shadow: 2px 4px rgba(0, 0, 0, 0.2);
+}
+.weather h3 {
+  letter-spacing: 0.2rem;
+}
+.weather span {
+  font-size: 1.3rem;
+}
+.attribute {
+  color: #d50032;
 }
