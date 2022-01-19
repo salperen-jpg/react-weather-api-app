@@ -19,7 +19,6 @@ export const AppProvider = ({ children }) => {
       if (data.cod === 404) {
         setError({ show: true, msg: data.message });
         console.log(data);
-        // throw new Error('Bad response from server');
         setIsLoading(false);
       } else {
         setIsLoading(false);

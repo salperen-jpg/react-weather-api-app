@@ -20,8 +20,6 @@ const Weather = () => {
     );
   }
 
-  let today = new Date();
-
   return (
     <>
       {weather.name ? (
@@ -34,8 +32,10 @@ const Weather = () => {
               {weather.name}, {weather.sys.country}
             </h2>
           </div>
-          <h3>{moment(today).format('dddd MMMM do')}</h3>
-          <h3>{moment(today).format('h:mm')}</h3>
+          {/* <h3>{moment(today).format('dddd MMMM do')}</h3>
+          <h3>{moment(today).format('h:mm')}</h3> */}
+          <h1>{moment().format('dddd MMMM do')}</h1>
+          <h3>{moment().format('h:mm')}</h3>
           <p>
             <span className='attribute'>Timezone : </span>
             <span>{weather.timezone}</span>
